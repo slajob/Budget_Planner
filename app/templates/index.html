@@ -1,15 +1,16 @@
 <html>
     <head>
         {% if title %}
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - Budget planner app</title>
         {% else %}
-        <title>Welcome to Microblog</title>
+        <title>Welcome to Budget planner</title>
         {% endif %}
     </head>
     <body>
         <h1>Hi, {{ user.username }}!</h1>
         {% for post in posts %}
-        <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+        <div>
+            <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
         {% endfor %}
     </body>
 </html>
