@@ -1,3 +1,3 @@
-Before run in bash type: 
-$ source venv/Scripts/activate
-to activate virtual env
+Before run in bash type:  
+source venv/Scripts/activate
+  to activate virtual env
