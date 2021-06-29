@@ -7,12 +7,18 @@
         {% endif %}
     </head>
     <body>
-        Menu:
-            <a href="/index">Home</a>
-            <a href="/login">Login</a>
+<!--        Menu:-->
+<!--            <a href="/index">Home</a>-->
+<!--            <a href="/login">Login</a>-->
         </div>
         <hr>
-        {% block content %}{% endblock %}
+        {% extends "base.html" %}
+        {% block content %}
+            <h1>Hi, {{ current_user.username }}!</h1>
+            {% for post in posts %}
+            <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+            {% endfor %}
+        {% endblock %}
 
             <h1>Hi, {{ user.username }}!</h1>
         {% for post in posts %}
