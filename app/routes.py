@@ -60,5 +60,5 @@ def user(username):
         {'author': user, 'body': 'Test post #2'}
     ]
     date = datetime.now()
-    return str(date)
-    return render_template('user.html', user=user, posts=posts)
+    monthno = date.strftime("%m")
+    return render_template('user.html', user=user, posts=posts, date=date.strftime("%d  %B %Y"), monthno=monthno)
