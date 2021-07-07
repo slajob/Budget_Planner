@@ -54,8 +54,13 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
+    # posts = [
+    #     {'author': user, 'body': 'Test post #1'},
+    #     {'author': user, 'body': 'Test post #2'}
+    # ]
+    if current_user == user:
+        cos = "ZATWIERDZONE"
+        return render_template('user.html', user=user, cos=cos)
+    else:
+        cos = "NEGATYWNE"
+        return render_template('user_error.html', user=user, cos=cos)
