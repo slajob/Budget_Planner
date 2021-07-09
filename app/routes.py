@@ -54,13 +54,11 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    # posts = [
-    #     {'author': user, 'body': 'Test post #1'},
-    #     {'author': user, 'body': 'Test post #2'}
-    # ]
+    date = datetime.now()
+    monthno = date.strftime("%m")
     if current_user == user:
         cos = "ZATWIERDZONE"
-        return render_template('user.html', user=user, cos=cos)
+        return render_template('user.html', user=user, date=date.strftime("%d  %B %Y"), monthno=monthno)
     else:
         cos = "NEGATYWNE"
         return render_template('user_error.html', user=user, cos=cos)
