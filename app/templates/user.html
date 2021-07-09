@@ -2,14 +2,15 @@
 
 {% block content %}
     <h1>User: {{ user.username }}</h1>
-    <hr>
-    {% for post in posts %}
-    <p>
-    {{ post.author.username }} says: <b>{{ post.body }}</b>
-    </p>
-    {% endfor %}
+<!--    <hr>-->
+<!--    {% for post in posts %}-->
+<!--    <p>-->
+<!--    {{ post.author.username }} says: <b>{{ post.body }}</b>-->
+<!--    </p>-->
+<!--    {% endfor %}-->
     <hr>
     Today is: {{ date }}
     <br>
     Month number: {{ monthno }}
+    User prov: {{ current_user }} {{ cos }}
 {% endblock %}
