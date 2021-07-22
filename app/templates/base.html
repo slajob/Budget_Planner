@@ -1,12 +1,11 @@
-<html>
-    <head>
-      {% if title %}
-      <title>{{ title }} - Budget planner app</title>
-      {% else %}
-      <title>Budget planner</title>
-      {% endif %}
-    </head>
-    <body>
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Budget planner{% else %}Welcome to Budget planner{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
         <div>
             Menu:
             <a href="{{ url_for('index') }}">Home</a>
@@ -18,16 +17,20 @@
             {% endif %}
             Logged as: {{ current_user }}
         </div>
-        <hr>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="alert alert-info" role="alert">{{ message }}</div>
             {% endfor %}
-        </ul>
         {% endif %}
         {% endwith %}
-        {% block content %}{% endblock %}
-    </body>
-</html>
+
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

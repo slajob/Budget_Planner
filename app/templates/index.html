@@ -1,19 +1,19 @@
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Budget planner app</title>
-        {% else %}
-        <title>Welcome to Budget planner</title>
-        {% endif %}
-    </head>
-    <body>
-<!--        Menu:-->
-<!--            <a href="/index">Home</a>-->
-<!--            <a href="/login">Login</a>-->
-        </div>
-        <hr>
+<!--<html>-->
+<!--    <head>-->
+<!--        {% if title %}-->
+<!--        <title>{{ title }} - Budget planner app</title>-->
+<!--        {% else %}-->
+<!--        <title>Welcome to Budget planner</title>-->
+<!--        {% endif %}-->
+<!--    </head>-->
+<!--    <body>-->
+<!--&lt;!&ndash;        Menu:&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/index">Home</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="/login">Login</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <hr>-->
         {% extends "base.html" %}
-        {% block content %}
+        {% block app_content %}
             <h1>Hi, {{ current_user.username }}!</h1>
             This is HOMEPAGE
 <!--            {% for post in posts %}-->
