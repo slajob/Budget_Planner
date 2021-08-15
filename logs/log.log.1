@@ -1,0 +1,130 @@
+2021-08-15 12:24:54,539 ERROR: Exception on /add [GET] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 75, in add
+    return render_template('add.html')
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 35, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 8, in block 'app_content'
+    {{ wtf.quick_form(form) }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\runtime.py", line 828, in _invoke
+    rv = self._func(*arguments)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\wtf.html", line 200, in template
+    {{ form.hidden_tag() }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2021-08-15 12:27:24,830 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-15 12:27:27,100 ERROR: Exception on /add [GET] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 78, in add
+    return render_template('add.html')
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 35, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 8, in block 'app_content'
+    {{ wtf.quick_form(form) }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\runtime.py", line 828, in _invoke
+    rv = self._func(*arguments)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\wtf.html", line 200, in template
+    {{ form.hidden_tag() }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2021-08-15 12:27:28,502 ERROR: Exception on /add [GET] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 78, in add
+    return render_template('add.html')
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 35, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 8, in block 'app_content'
+    {{ wtf.quick_form(form) }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\runtime.py", line 828, in _invoke
+    rv = self._func(*arguments)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\wtf.html", line 200, in template
+    {{ form.hidden_tag() }}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined

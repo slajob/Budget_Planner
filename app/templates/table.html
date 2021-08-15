@@ -1,6 +1,40 @@
-<!--{% block content %}-->
-{% for table in tables %}
-            {{titles[loop.index]}}
-            {{ table|safe }}
-{% endfor %}
-<!--{% endblock %}-->
+<!--&lt;!&ndash;{% block content %}&ndash;&gt;-->
+<!--{% for table in tables %}-->
+<!--            {{titles[loop.index]}}-->
+<!--            {{ table|safe }}-->
+<!--{% endfor %}-->
+<!--&lt;!&ndash;{% endblock %}&ndash;&gt;-->
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<body>
+
+<h2>Table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>80</td>
+  </tr>
+</table>
+
+</body>
+{% endblock %}
