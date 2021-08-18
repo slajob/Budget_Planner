@@ -71,8 +71,10 @@ def user(username):
 
 @app.route('/add')
 def add():
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
-    # return "None"
     return render_template('add.html')
+
+@app.route('/add', methods=['POST'])
+def add_data():
+    name = request.form.get('name')
+    amount = request.form.get('amount')
+    return f'{name} - {amount}'
