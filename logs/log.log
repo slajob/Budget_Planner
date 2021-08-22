@@ -1,1 +1,20 @@
 2021-08-21 21:55:57,405 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 08:45:24,825 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 08:46:16,588 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 08:48:45,145 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 08:50:02,123 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 08:50:07,258 ERROR: Exception on /add [POST] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 82, in add_data
+    new_record = Expenses(name=name, amount=amount, user_id=user_id)
+NameError: name 'Expenses' is not defined
+2021-08-22 08:52:12,554 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 09:22:07,976 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]

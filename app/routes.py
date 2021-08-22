@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Expenses
 from werkzeug.urls import url_parse
 from datetime import datetime
 
@@ -77,4 +77,9 @@ def add():
 def add_data():
     name = request.form.get('name')
     amount = request.form.get('amount')
-    return f'{name} - {amount}'
+    user_id = request.form.get('user_id')
+    timestamp = request.form.get('timestamp')
+    new_record = Expenses(name=name, amount=amount, user_id=user_id)
+    db.session.add(new_record)
+    db.session.commit()
+    return f'{name} - {amount} - {user_id} - {timestamp}'
