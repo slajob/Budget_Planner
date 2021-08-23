@@ -71,7 +71,10 @@ def user(username):
 
 @app.route('/add')
 def add():
-    return render_template('add.html')
+    exp = Expenses.query.all()
+
+    return render_template('add.html', exp=exp)
+
 
 @app.route('/add', methods=['POST'])
 def add_data():
@@ -82,4 +85,5 @@ def add_data():
     new_record = Expenses(name=name, amount=amount, user_id=user_id)
     db.session.add(new_record)
     db.session.commit()
-    return f'{name} - {amount} - {user_id} - {timestamp}'
+    return redirect(url_for('add'))
+    # return f'{name} - {amount} - {user_id} - {timestamp}'

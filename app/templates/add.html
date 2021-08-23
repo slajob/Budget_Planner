@@ -16,6 +16,30 @@
 
   <input type="submit" value="Submit">
 
+
+  {% for expenses in exp %}
+  <body>
+<table style="width:100%">
+
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Time</th>
+  </tr>
+
+  <tr>
+    <td>{{ expenses.id }} </a></td>
+    <td>{{ expenses.name }}</td>
+    <td>{{ amount }}</td>
+    <td>{{ expenses.timestamp }}</td>
+  </tr>
+
+</table>
+</body>
+{% endfor %}
+
+
 </form>
 </body>
 {% endblock %}
