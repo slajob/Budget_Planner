@@ -35,7 +35,7 @@ class Expenses(db.Model):
     name = db.Column(db.String)
     amount = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #nullable=False eventually try
+    user_id = db.Column(db.String, db.ForeignKey('user.id')) #nullable=False eventually try
     user_nick = db.relationship('User', backref=db.backref('users', lazy=True))
 
 @login.user_loader

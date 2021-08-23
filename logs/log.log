@@ -18,3 +18,105 @@ Traceback (most recent call last):
 NameError: name 'Expenses' is not defined
 2021-08-22 08:52:12,554 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
 2021-08-22 09:22:07,976 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:21:27,946 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:22:14,494 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:24:29,940 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:24:34,091 ERROR: Exception on /add [GET] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 74, in add
+    return render_template('add.html')
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 35, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 15, in block 'app_content'
+    <input type="number" id="user_id" name="user_id" value="{{ user.username }}"><br>
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2021-08-22 17:24:34,437 ERROR: Exception on /add [GET] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 74, in add
+    return render_template('add.html')
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "D:\GIT\Budget_Planner\app\templates\base.html", line 35, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "D:\GIT\Budget_Planner\app\templates\add.html", line 15, in block 'app_content'
+    <input type="number" id="user_id" name="user_id" value="{{ user.username }}"><br>
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\jinja2\environment.py", line 474, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2021-08-22 17:24:46,473 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:26:01,758 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:27:50,448 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:28:07,200 ERROR: Exception on /add [POST] [in D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\GIT\Budget_Planner\venv2\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\GIT\Budget_Planner\app\routes.py", line 81, in add_data
+    user_id = user.id
+AttributeError: 'function' object has no attribute 'id'
+2021-08-22 17:29:02,048 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:29:54,095 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:31:01,053 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:31:13,763 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
+2021-08-22 17:31:21,280 INFO: Microblog startup [in D:\GIT\Budget_Planner\app\__init__.py:30]
