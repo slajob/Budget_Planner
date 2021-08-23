@@ -5,41 +5,38 @@
 <body>
 <form action="{{ url_for('add') }}" method="POST" role="form">
 
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" value="asd123"><br>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="asd123"><br>
 
-  <label for="amount">Amount:</label><br>
-  <input type="text" id="amount" name="amount" value="dfg654"><br>
+    <label for="amount">Amount:</label><br>
+    <input type="text" id="amount" name="amount" value="dfg654"><br>
 
     <label for="user_id">User ID:</label><br>
-  <input type="text" id="user_id" name="user_id" value={{ current_user }}><br>
+    <input type="text" id="user_id" name="user_id" value={{ current_user }}><br>
 
-  <input type="submit" value="Submit">
+    <input type="submit" value="Submit">
+</form>
 
 
-  {% for expenses in exp %}
-  <body>
-<table style="width:100%">
+<table class="table table-bordered ">
+    <thead>
 
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Amount</th>
-    <th>Time</th>
-  </tr>
-
-  <tr>
-    <td>{{ expenses.id }} </a></td>
-    <td>{{ expenses.name }}</td>
-    <td>{{ amount }}</td>
-    <td>{{ expenses.timestamp }}</td>
-  </tr>
-
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Time</th>
+    </tr>
+    {% for expenses in exp %}
+    <tr>
+        <td>{{ expenses.id }} </a></td>
+        <td>{{ expenses.name }}</td>
+        <td>{{ expenses.amount }}</td>
+        <td>{{ expenses.timestamp }}</td>
+    </tr>
+    {% endfor %}
+    </thead>
 </table>
 </body>
-{% endfor %}
 
-
-</form>
-</body>
 {% endblock %}
