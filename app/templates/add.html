@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block app_content %}
 <body>
     <h1>Sign In</h1>
     <form action="" method="post" novalidate>
@@ -28,6 +28,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Amount</th>
+        <th>User ID</th>
         <th>Time</th>
     </tr>
     {% for expenses in exp %}
@@ -35,6 +36,7 @@
         <td>{{ expenses.id }} </a></td>
         <td>{{ expenses.name }}</td>
         <td>{{ expenses.amount }}</td>
+        <td>{{ expenses.user_id }}</td>
         <td>{{ expenses.timestamp }}</td>
     </tr>
     {% endfor %}
