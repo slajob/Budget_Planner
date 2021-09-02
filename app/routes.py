@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, ExpensesForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Expenses
 from werkzeug.urls import url_parse
@@ -69,23 +69,28 @@ def user(username):
         cos = "NEGATYWNE"
         return render_template('user_error.html', user=user, cos=cos)
 
-@app.route('/add')
+# @app.route('/add')
+# def add():
+#     exp = Expenses.query.all()
+#
+#     return render_template('add.html', exp=exp)
+
+
+@app.route('/add', methods=['GET', 'POST'])
 def add():
+    form = ExpensesForm()
     exp = Expenses.query.all()
+    return render_template('add.html', title='Add', form=form, exp=exp)
 
-    return render_template('add.html', exp=exp)
+    # name = request.form.get('name')
+    # amount = request.form.get('amount')
+    # user_id = current_user.id
+    # timestamp = request.form.get('timestamp')
+    # new_record = Expenses(name=name, amount=amount, user_id=user_id)
+    # db.session.add(new_record)
+    # db.session.commit()
+    # return redirect(url_for('add'))
 
-
-@app.route('/add', methods=['POST'])
-def add_data():
-    name = request.form.get('name')
-    amount = request.form.get('amount')
-    user_id = current_user.id
-    timestamp = request.form.get('timestamp')
-    new_record = Expenses(name=name, amount=amount, user_id=user_id)
-    db.session.add(new_record)
-    db.session.commit()
-    return redirect(url_for('add'))
     # return f'{name} - {amount} - {user_id} - {timestamp}'
 
     #

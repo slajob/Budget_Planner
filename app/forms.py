@@ -41,3 +41,9 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+class ExpensesForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    amount = StringField('amount', validators=[DataRequired()])
+    # user_id = StringField('user_id', validators=[DataRequired()])
+    add = SubmitField('Add record')
