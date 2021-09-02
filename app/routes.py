@@ -81,8 +81,8 @@ def add():
     form = ExpensesForm()
     exp = Expenses.query.all()
     if form.validate_on_submit():
-        # current_user.id
-        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=current_user.id)
+        user_id = current_user.id
+        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id)
         db.session.add(new_record)
         db.session.commit()
         return redirect('/add')
