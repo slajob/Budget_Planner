@@ -45,5 +45,5 @@ class EditProfileForm(FlaskForm):
 class ExpensesForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     amount = StringField('amount', validators=[DataRequired()])
-    # user_id = StringField('user_id', validators=[DataRequired()])
+    user_id = StringField('user_id', validators=[DataRequired()])
     add = SubmitField('Add record')

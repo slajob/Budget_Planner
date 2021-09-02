@@ -80,6 +80,12 @@ def user(username):
 def add():
     form = ExpensesForm()
     exp = Expenses.query.all()
+    if form.validate_on_submit():
+        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=form.user_id.data)
+        db.session.add(new_record)
+        db.session.commit()
+        exp = Expenses.query.all()
+        return redirect('/add')
     return render_template('add.html', title='Add', form=form, exp=exp)
 
     # name = request.form.get('name')
