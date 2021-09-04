@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, IntegerField, FloatField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, IntegerField, FloatField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 from flask_login import current_user
@@ -46,4 +46,5 @@ class EditProfileForm(FlaskForm):
 class ExpensesForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     amount = FloatField('amount', validators=[DataRequired()])
+    exorin = SelectField(u'Expense or Income', choices=[('Expense', 'Expense'), ('Income', 'Income')])
     add = SubmitField('Add record')

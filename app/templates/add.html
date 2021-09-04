@@ -14,6 +14,8 @@
             {{ form.amount(size=32) }}
         </p>
 
+        <p>{{ form.exorin() }}</p>
+
         <p>{{ form.add() }}</p>
     </form>
 
@@ -25,6 +27,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Amount</th>
+        <th>Record type</th>
         <th>User ID</th>
         <th>Time</th>
     </tr>
@@ -33,6 +36,7 @@
         <td>{{ expenses.id }} </a></td>
         <td>{{ expenses.name }}</td>
         <td>{{ expenses.amount }}</td>
+        <td>{{ expenses.exorin }}</td>
         <td>{{ expenses.user_id }}</td>
         <td>{{ expenses.timestamp }}</td>
     </tr>
