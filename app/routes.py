@@ -5,6 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Expenses
 from werkzeug.urls import url_parse
 from datetime import datetime
+from sqlalchemy import func
 
 @app.route('/')
 @app.route('/index')
@@ -86,7 +87,13 @@ def add():
         db.session.add(new_record)
         db.session.commit()
         return redirect('/add')
-    return render_template('add.html', title='Add', form=form, exp=exp)
+
+    summary = Expenses.query.with_entities(func.sum(Expenses.amount)).all()
+    # print(summary)
+
+
+
+    return render_template('add.html', title='Add', form=form, exp=exp, summary=summary)
 
     # name = request.form.get('name')
     # amount = request.form.get('amount')
