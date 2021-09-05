@@ -31,7 +31,7 @@
         <th>User ID</th>
         <th>Time</th>
     </tr>
-    {% for expenses in exp %}
+    {% for expenses in exp if 'Car' in expenses.name %}
     <tr>
         <td>{{ expenses.id }} </a></td>
         <td>{{ expenses.name }}</td>
