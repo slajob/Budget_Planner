@@ -29,15 +29,17 @@
         <th>Amount</th>
         <th>Record type</th>
         <th>User ID</th>
+        <th>Month No.</th>
         <th>Time</th>
     </tr>
-    {% for expenses in exp if 'Car' in expenses.name %}
+    {% for expenses in exp if '9' in expenses.monthno %}
     <tr>
         <td>{{ expenses.id }} </a></td>
         <td>{{ expenses.name }}</td>
         <td>{{ expenses.amount }}</td>
         <td>{{ expenses.exorin }}</td>
         <td>{{ expenses.user_id }}</td>
+        <td>{{ expenses.monthno }}</td>
         <td>{{ expenses.timestamp }}</td>
     </tr>
     {% endfor %}

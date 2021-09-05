@@ -77,11 +77,12 @@ def add():
     form = ExpensesForm()
     exp = Expenses.query.all()
     if form.validate_on_submit():
+        monthno = datetime.utcnow().strftime("%m")
         user_id = current_user.id
-        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data)
+        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
         if form.exorin.data == "Expense":
             form.amount.data = -form.amount.data
-            new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data)
+            new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
         db.session.add(new_record)
         db.session.commit()
         return redirect('/add')

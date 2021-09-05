@@ -2,7 +2,7 @@ from datetime import datetime
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app import login
+from app import login, routes
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,7 +32,8 @@ class Expenses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     amount = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    monthno = db.Column(db.String, default=str(datetime.utcnow().strftime("%m")))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow())
     user_id = db.Column(db.String, db.ForeignKey('user.id')) #nullable=False eventually try
     exorin = db.Column(db.String)
     user_nick = db.relationship('User', backref=db.backref('users', lazy=True))
