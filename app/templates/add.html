@@ -13,7 +13,10 @@
             {{ form.amount.label }}<br>
             {{ form.amount(size=32) }}
         </p>
-
+        <p>
+            {{ form.monthno.label }}<br>
+            {{ form.monthno(size=32) }}
+        </p>
         <p>{{ form.exorin() }}</p>
 
         <p>{{ form.add() }}</p>
@@ -32,7 +35,8 @@
         <th>Month No.</th>
         <th>Time</th>
     </tr>
-    {% for expenses in exp if '9' in expenses.monthno %}
+    {# {% for expenses in exp if '9' in expenses.monthno %} #}
+    {% for expenses in exp %}
     <tr>
         <td>{{ expenses.id }} </a></td>
         <td>{{ expenses.name }}</td>

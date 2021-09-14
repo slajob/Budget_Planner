@@ -57,7 +57,7 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     date = datetime.now()
-    monthno = date.strftime("%m")
+    monthno = int((datetime.utcnow().strftime("%m")))
     if current_user == user:
         cos = "ZATWIERDZONE"
         return render_template('user.html', user=user, date=date.strftime("%d  %B %Y"), monthno=monthno)
@@ -77,8 +77,8 @@ def add():
     form = ExpensesForm()
     exp = Expenses.query.all()
     if form.validate_on_submit():
-        monthno = datetime.utcnow().strftime("%m")
         user_id = current_user.id
+        monthno = form.monthno.data
         new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
         if form.exorin.data == "Expense":
             form.amount.data = -form.amount.data

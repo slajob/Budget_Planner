@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 from flask_login import current_user
+from datetime import datetime
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -31,5 +32,7 @@ class RegistrationForm(FlaskForm):
 class ExpensesForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     amount = FloatField('amount', validators=[DataRequired()])
+    monthno = IntegerField('monthno', default = datetime.utcnow().strftime("%m"))
     exorin = SelectField(u'Expense or Income', choices=[('Expense', 'Expense'), ('Income', 'Income')])
+
     add = SubmitField('Add record')
