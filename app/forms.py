@@ -36,3 +36,7 @@ class ExpensesForm(FlaskForm):
     exorin = SelectField(u'Expense or Income', choices=[('Expense', 'Expense'), ('Income', 'Income')])
 
     add = SubmitField('Add record')
+
+class MonthChooseForm(FlaskForm):
+    choosemonth = IntegerField('choosemonth', default=datetime.utcnow().strftime("%m"))
+    show = SubmitField('Show')

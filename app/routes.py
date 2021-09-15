@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ExpensesForm
+from app.forms import LoginForm, RegistrationForm, ExpensesForm, MonthChooseForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Expenses
 from werkzeug.urls import url_parse
@@ -72,10 +72,10 @@ def user(username):
 #     return render_template('add.html', exp=exp)
 
 
-@app.route('/add', methods=['GET', 'POST'])
+@app.route('/add', methods=['POST'])
 def add():
     form = ExpensesForm()
-    exp = Expenses.query.all()
+    # exp = Expenses.query.all()
     if form.validate_on_submit():
         user_id = current_user.id
         monthno = form.monthno.data
@@ -86,12 +86,18 @@ def add():
         db.session.add(new_record)
         db.session.commit()
         return redirect('/add')
+    # summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).all()[0])
+    # print(type(summary))
+    return render_template('add.html', title='Add', form=form)
 
+@app.route('/add', methods=['GET'])
+def show():
+    exp = Expenses.query.all()
+    form = ExpensesForm()
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).all()[0])
     print(type(summary))
+    return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
+    # return render_template('add.html', title='Add', form=form, exp=exp, summary=summary)
 
 
-
-
-    return render_template('add.html', title='Add', form=form, exp=exp, summary=summary)
 
