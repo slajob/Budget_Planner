@@ -75,7 +75,6 @@ def user(username):
 @app.route('/add', methods=['POST'])
 def add():
     form = ExpensesForm()
-    # exp = Expenses.query.all()
     if form.validate_on_submit():
         user_id = current_user.id
         monthno = form.monthno.data
@@ -86,8 +85,6 @@ def add():
         db.session.add(new_record)
         db.session.commit()
         return redirect('/add')
-    # summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).all()[0])
-    # print(type(summary))
     return render_template('add.html', title='Add', form=form)
 
 @app.route('/add', methods=['GET'])
@@ -95,9 +92,8 @@ def show():
     exp = Expenses.query.all()
     form = ExpensesForm()
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).all()[0])
-    print(type(summary))
+    # print(type(summary))
     return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
-    # return render_template('add.html', title='Add', form=form, exp=exp, summary=summary)
 
 
 
