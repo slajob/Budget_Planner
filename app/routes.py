@@ -89,9 +89,10 @@ def add():
 
 @app.route('/add', methods=['GET'])
 def show():
-    exp = Expenses.query.filter(Expenses.monthno == 9)
+    choosed = 9
+    exp = Expenses.query.filter(Expenses.monthno == choosed)
     form = ExpensesForm()
-    summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == 9)[0])
+    summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
     # print(type(summary))
     return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
 
