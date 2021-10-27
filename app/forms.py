@@ -37,6 +37,6 @@ class ExpensesForm(FlaskForm):
 
     add = SubmitField('Add record')
 
-class MonthChooseForm(FlaskForm):
-    choosemonth = IntegerField('Filter by month', default=datetime.utcnow().strftime("%m"))
-    show = SubmitField('Show')
+# class MonthChooseForm(FlaskForm):
+#     choosemonth = IntegerField('Filter by month', default=datetime.utcnow().strftime("%m"))
+#     show = SubmitField('Show')

@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ExpensesForm, MonthChooseForm
+from app.forms import LoginForm, RegistrationForm, ExpensesForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Expenses
 from werkzeug.urls import url_parse
@@ -65,19 +65,10 @@ def user(username):
         cos = "NEGATYWNE"
         return render_template('user_error.html', user=user, cos=cos)
 
-# @app.route('/add')
-# def add():
-#     exp = Expenses.query.all()
-#
-#     return render_template('add.html', exp=exp)
-
-
 @app.route('/add', methods=['POST'])
 def add():
     form = ExpensesForm()
-    monthform = MonthChooseForm()
-    # if form.validate_on_submit():
-    if form.add.data and form.validate_on_submit():
+    if form.validate_on_submit():
         user_id = current_user.id
         monthno = form.monthno.data
         new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
@@ -88,25 +79,25 @@ def add():
         db.session.commit()
         return redirect('/add')
 
-    return render_template('add.html', title='Add', form=form, monthform=monthform)
+    return render_template('add.html', title='Add', form=form)
 
 @app.route('/add', methods=['GET'])
 def show():
-    monthform = MonthChooseForm()
     form = ExpensesForm()
-    choosed = monthform.choosemonth.data
-    if monthform.show.data and monthform.validate_on_submit():
-        choosed = monthform.choosemonth.data
-        print(choosed)
-        exp = Expenses.query.filter(Expenses.monthno == choosed)
-        form = ExpensesForm()
-        summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-        return render_template('add.html', title='Add', form=form, monthform=monthform, choosed=choosed, exp=exp, summary=summary)
-        render_template('add.html', title='Add', form=form, monthform=monthform)
+    choosed = form.monthno.data #show records from actual month
+    # choosed = 9git 
+    print(choosed)
     exp = Expenses.query.filter(Expenses.monthno == choosed)
+    # if monthform.show.data and monthform.validate_on_submit():
+    #     choosed = monthform.choosemonth.data
+    #     print(choosed)
+    #     exp = Expenses.query.filter(Expenses.monthno == choosed)
+    #     form = ExpensesForm()
+    #     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
+    #     return render_template('add.html', title='Add', form=form, monthform=monthform, choosed=choosed, exp=exp, summary=summary)
+    #     render_template('add.html', title='Add', form=form, monthform=monthform)
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-    # print(type(summary))
-    return render_template('add.html', title='Add', exp=exp, summary=summary, form=form, monthform=monthform)
+    return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
 
 
 
