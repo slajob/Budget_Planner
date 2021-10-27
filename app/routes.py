@@ -105,6 +105,17 @@ def userpost(username):
         cos = "NEGATYWNE"
         return render_template('user_error.html', user=user, cos=cos)
 
+@app.route('/recexp', methods=['GET'])
+def reccexpshow():
+    return render_template("recexp.html")
+
+    # if current_user == user:
+    #     cos = "ZATWIERDZONE"
+    #     return render_template('user.html', user=user, date=date.strftime("%d  %B %Y"), monthno=monthno)
+    # else:
+    #     cos = "NEGATYWNE"
+    #     return render_template('user_error.html', user=user, cos=cos)
+
 # @app.route('/add', methods=['POST'])
 # def add():
 #     form = ExpensesForm()
