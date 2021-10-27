@@ -3,14 +3,63 @@
 {% block app_content %}
     <h1>User: {{ user.username }}</h1>
     <h1>User id: {{ user.id }}</h1>
-<!--    <hr>-->
-<!--    {% for post in posts %}-->
-<!--    <p>-->
-<!--    {{ post.author.username }} says: <b>{{ post.body }}</b>-->
-<!--    </p>-->
-<!--    {% endfor %}-->
+
     <hr>
     Today is: {{ date }}
     <br>
     Month number: {{ monthno }}
+
+    <body>
+        <h1>Add new expense record</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.name.label }}<br>
+                {{ form.name(size=32) }}
+            </p>
+            <p>
+                {{ form.amount.label }}<br>
+                {{ form.amount(size=32) }}
+            </p>
+            <p>
+                {{ form.monthno.label }}<br>
+                {{ form.monthno(size=32) }}
+            </p>
+            <p>{{ form.exorin() }}</p>
+
+            <p>{{ form.add() }}</p>
+        </form>
+
+
+
+    <table class="table table-sm ">
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Record type</th>
+            <th>User ID</th>
+            <th>Month No.</th>
+            <th>Time</th>
+        </tr>
+        {# {% for expenses in exp if '9' in expenses.monthno %} #}
+        {% for expenses in exp %}
+        <tr>
+            <td>{{ expenses.id }} </a></td>
+            <td>{{ expenses.name }}</td>
+            <td>{{ expenses.amount }}</td>
+            <td>{{ expenses.exorin }}</td>
+            <td>{{ expenses.user_id }}</td>
+            <td>{{ expenses.monthno }}</td>
+            <td>{{ expenses.timestamp }}</td>
+        </tr>
+        {% endfor %}
+
+        {{summary}}
+        </thead>
+    </table>
+    </body>
+
 {% endblock %}
