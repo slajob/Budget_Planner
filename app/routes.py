@@ -85,7 +85,6 @@ def add():
 def show():
     form = ExpensesForm()
     choosed = form.monthno.data #show records from actual month
-    # choosed = 9git 
     print(choosed)
     exp = Expenses.query.filter(Expenses.monthno == choosed)
     # if monthform.show.data and monthform.validate_on_submit():
