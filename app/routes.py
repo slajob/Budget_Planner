@@ -97,6 +97,3 @@ def show():
     #     render_template('add.html', title='Add', form=form, monthform=monthform)
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
     return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
-
-
-
