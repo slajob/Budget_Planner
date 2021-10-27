@@ -105,35 +105,35 @@ def userpost(username):
         cos = "NEGATYWNE"
         return render_template('user_error.html', user=user, cos=cos)
 
-@app.route('/add', methods=['POST'])
-def add():
-    form = ExpensesForm()
-    if form.validate_on_submit():
-        user_id = current_user.id
-        monthno = form.monthno.data
-        new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
-        if form.exorin.data == "Expense":
-            form.amount.data = -form.amount.data
-            new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
-        db.session.add(new_record)
-        db.session.commit()
-        return redirect('/add')
-
-    return render_template('add.html', title='Add', form=form)
-
-@app.route('/add', methods=['GET'])
-def show():
-    form = ExpensesForm()
-    choosed = form.monthno.data #show records from actual month
-    print(choosed)
-    exp = Expenses.query.filter(Expenses.monthno == choosed)
-    # if monthform.show.data and monthform.validate_on_submit():
-    #     choosed = monthform.choosemonth.data
-    #     print(choosed)
-    #     exp = Expenses.query.filter(Expenses.monthno == choosed)
-    #     form = ExpensesForm()
-    #     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-    #     return render_template('add.html', title='Add', form=form, monthform=monthform, choosed=choosed, exp=exp, summary=summary)
-    #     render_template('add.html', title='Add', form=form, monthform=monthform)
-    summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-    return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
+# @app.route('/add', methods=['POST'])
+# def add():
+#     form = ExpensesForm()
+#     if form.validate_on_submit():
+#         user_id = current_user.id
+#         monthno = form.monthno.data
+#         new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
+#         if form.exorin.data == "Expense":
+#             form.amount.data = -form.amount.data
+#             new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
+#         db.session.add(new_record)
+#         db.session.commit()
+#         return redirect('/add')
+#
+#     return render_template('add.html', title='Add', form=form)
+#
+# @app.route('/add', methods=['GET'])
+# def show():
+#     form = ExpensesForm()
+#     choosed = form.monthno.data #show records from actual month
+#     print(choosed)
+#     exp = Expenses.query.filter(Expenses.monthno == choosed)
+#     # if monthform.show.data and monthform.validate_on_submit():
+#     #     choosed = monthform.choosemonth.data
+#     #     print(choosed)
+#     #     exp = Expenses.query.filter(Expenses.monthno == choosed)
+#     #     form = ExpensesForm()
+#     #     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
+#     #     return render_template('add.html', title='Add', form=form, monthform=monthform, choosed=choosed, exp=exp, summary=summary)
+#     #     render_template('add.html', title='Add', form=form, monthform=monthform)
+#     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
+#     return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
