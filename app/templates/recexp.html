@@ -1,6 +1,51 @@
 {% extends "base.html" %}
 
 {% block app_content %}
+
+</form>
+
+    <body>
+        <h1>Add new reccuring expense record</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.name.label }}<br>
+                {{ form.name(size=32) }}
+            </p>
+            <p>
+                {{ form.amount.label }}<br>
+                {{ form.amount(size=32) }}
+            </p>
+
+            </p>
+
+            <p>{{ form.add() }}</p>
+        </form>
+
+        {{summary}}
+        <p>
 test
+
+    <table class="table table-sm ">
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>User ID</th>
+            <th>Time</th>
+        </tr>
+        {% for reccuringexpenses in recexp %}
+        <tr>
+            <td>{{ reccuringexpenses.id }} </a></td>
+            <td>{{ reccuringexpenses.name }}</td>
+            <td>{{ reccuringexpenses.amount }}</td>
+            <td>{{ reccuringexpenses.user_id }}</td>
+            <td>{{ reccuringexpenses.timestamp }}</td>
+        </tr>
+        {% endfor %}
+        </thead>
+    </table>
 
 {% endblock %}

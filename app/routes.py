@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, ExpensesForm
+from app.forms import LoginForm, RegistrationForm, ExpensesForm, ReccuringExpensesForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Expenses
+from app.models import User, Expenses, Reccuringexpenses
 from werkzeug.urls import url_parse
 from datetime import datetime
 from sqlalchemy import func
@@ -61,10 +61,8 @@ def user(username):
 
     form = ExpensesForm()
     choosed = form.monthno.data #show records from actual month
-    # print(choosed)
     exp = Expenses.query.filter(Expenses.monthno == choosed)
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-    # return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
 
     if current_user == user:
         cos = "ZATWIERDZONE"
@@ -82,10 +80,8 @@ def userpost(username):
 
     form = ExpensesForm()
     choosed = form.monthno.data #show records from actual month
-    # print(choosed)
     exp = Expenses.query.filter(Expenses.monthno == choosed)
     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-    # return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
 
     if form.validate_on_submit():
         user_id = current_user.id
@@ -106,45 +102,25 @@ def userpost(username):
         return render_template('user_error.html', user=user, cos=cos)
 
 @app.route('/recexp', methods=['GET'])
+@login_required
 def reccexpshow():
-    return render_template("recexp.html")
 
-    # if current_user == user:
-    #     cos = "ZATWIERDZONE"
-    #     return render_template('user.html', user=user, date=date.strftime("%d  %B %Y"), monthno=monthno)
-    # else:
-    #     cos = "NEGATYWNE"
-    #     return render_template('user_error.html', user=user, cos=cos)
+    form = ReccuringExpensesForm()
+    recexp = Reccuringexpenses.query.all()
+    summary = (Reccuringexpenses.query.with_entities(func.sum(Reccuringexpenses.amount))[0])
+    print(type(summary))
+    return render_template("recexp.html", recexp=recexp,form=form, summary=summary)
 
-# @app.route('/add', methods=['POST'])
-# def add():
-#     form = ExpensesForm()
-#     if form.validate_on_submit():
-#         user_id = current_user.id
-#         monthno = form.monthno.data
-#         new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
-#         if form.exorin.data == "Expense":
-#             form.amount.data = -form.amount.data
-#             new_record = Expenses(name=form.name.data, amount=form.amount.data, user_id=user_id, exorin=form.exorin.data, monthno=monthno)
-#         db.session.add(new_record)
-#         db.session.commit()
-#         return redirect('/add')
-#
-#     return render_template('add.html', title='Add', form=form)
-#
-# @app.route('/add', methods=['GET'])
-# def show():
-#     form = ExpensesForm()
-#     choosed = form.monthno.data #show records from actual month
-#     print(choosed)
-#     exp = Expenses.query.filter(Expenses.monthno == choosed)
-#     # if monthform.show.data and monthform.validate_on_submit():
-#     #     choosed = monthform.choosemonth.data
-#     #     print(choosed)
-#     #     exp = Expenses.query.filter(Expenses.monthno == choosed)
-#     #     form = ExpensesForm()
-#     #     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-#     #     return render_template('add.html', title='Add', form=form, monthform=monthform, choosed=choosed, exp=exp, summary=summary)
-#     #     render_template('add.html', title='Add', form=form, monthform=monthform)
-#     summary = (Expenses.query.with_entities(func.sum(Expenses.amount)).filter(Expenses.monthno == choosed)[0])
-#     return render_template('add.html', title='Add', exp=exp, summary=summary, form=form)
+@app.route('/recexp', methods=['POST'])
+@login_required
+def reccexppost():
+
+    form = ReccuringExpensesForm()
+
+    if form.validate_on_submit():
+        user_id = current_user.id
+        print(user_id)
+        new_record = Reccuringexpenses(name=form.name.data, amount=form.amount.data, user_id=user_id)
+        db.session.add(new_record)
+        db.session.commit()
+        return redirect('')

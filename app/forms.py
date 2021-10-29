@@ -34,7 +34,11 @@ class ExpensesForm(FlaskForm):
     amount = FloatField('amount', validators=[DataRequired()])
     monthno = IntegerField('monthno', default = datetime.utcnow().strftime("%m"))
     exorin = SelectField(u'Expense or Income', choices=[('Expense', 'Expense'), ('Income', 'Income')])
+    add = SubmitField('Add record')
 
+class ReccuringExpensesForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    amount = FloatField('amount', validators=[DataRequired()])
     add = SubmitField('Add record')
 
 # class MonthChooseForm(FlaskForm):
